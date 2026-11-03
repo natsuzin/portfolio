@@ -167,20 +167,20 @@
 
 .hero__corner {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
   transition: transform 0.5s var(--ease-out);
 
   &--tl {
-    top: -6px;
-    left: -6px;
+    top: -8px;
+    left: -8px;
     background: var(--color-primary);
   }
 
   &--br {
-    right: -6px;
-    bottom: -6px;
+    right: -8px;
+    bottom: -8px;
     background: var(--color-accent);
   }
 }

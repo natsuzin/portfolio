@@ -33,6 +33,9 @@ jobs:
       - name: Compilar
         run: npx ng build --base-href /portfolio/
 
+      - name: Criar 404.html para as rotas do Angular
+        run: cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+
       - name: Enviar o site compilado
         uses: actions/upload-pages-artifact@v3
         with:

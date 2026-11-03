@@ -67,7 +67,7 @@ export const CONTENT_PT: PortfolioData = {
       'Atuo no planejamento, arquitetura e desenvolvimento de novos softwares internos na ID Energy, com foco em interfaces bem pensadas.',
       'Sou movida por aprender e encarar novos desafios. Estou concluindo o bacharelado em Ciência da Computação na UNIVALI, com formatura prevista para o 1º semestre de 2027.',
     ],
-    photoUrl: '/images/nathalia.jpg',
+    photoUrl: 'images/nathalia.jpg',
     photoAlt: 'Foto de Nathalia Suzin sorrindo, de camisa branca, em um evento acadêmico',
     facts: [
       { label: 'Atualmente', value: 'Dev Júnior na ID Energy' },
@@ -97,7 +97,7 @@ export const CONTENT_PT: PortfolioData = {
         'Roteiro prático em seis etapas, do primeiro pixel aceso até um jogo Snake escrito inteiramente em assembly',
       ],
       tags: ['Angular', 'TypeScript', 'RISC-V', 'SCSS'],
-      imageUrl: '/images/projects/aeris.webp',
+      imageUrl: 'images/projects/aeris.webp',
       imageAlt:
         'Interface do ÆRIS com o Painel Gráfico exibindo uma cobra verde e uma comida vermelha desenhadas por um programa RISC-V, ao lado da tabela de registradores',
       repositoryUrl: 'https://github.com/xarc/aeris',
@@ -111,7 +111,7 @@ export const CONTENT_PT: PortfolioData = {
       year: 2025,
       badge: 'Profissional',
       tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
-      imageUrl: '/images/projects/idenergy.webp',
+      imageUrl: 'images/projects/idenergy.webp',
       imageAlt:
         'Tela de login do sistema da ID Energy, com o logotipo à esquerda e o formulário de e-mail e senha à direita, sobre uma foto de painéis solares',
       repositoryUrl: 'https://github.com/IDEnergy-br',
@@ -124,7 +124,7 @@ export const CONTENT_PT: PortfolioData = {
         'Simulador web das provas do ENADE com questões reais (2014, 2017 e 2021), cronômetro de 4 horas, correção comentada, autoavaliação das discursivas, exportação do resultado e histórico de evolução salvo no navegador. Criado para ajudar estudantes de computação a se prepararem para a prova.',
       year: 2026,
       tags: ['Angular 19', 'TypeScript', 'Signals', 'localStorage'],
-      imageUrl: '/images/projects/enade-sim.webp',
+      imageUrl: 'images/projects/enade-sim.webp',
       imageAlt:
         'Tela inicial do ENADE Sim com o resumo do novo simulado, 40 questões em 4 horas, e o quadro de evolução',
       repositoryUrl: 'https://github.com/natsuzin/enade-sim',
@@ -137,7 +137,7 @@ export const CONTENT_PT: PortfolioData = {
         'Criado para acompanhar a progressão no jogo Stardew Valley: uma fazenda 3D em pixel art que reflete o seu progresso, com construções clicáveis para cada categoria, estações, ciclo de dia e noite, versão em português e inglês e importação do save do jogo.',
       year: 2026,
       tags: ['JavaScript', 'Three.js', 'Vite', 'Vitest'],
-      imageUrl: '/images/projects/perfect-valley.webp',
+      imageUrl: 'images/projects/perfect-valley.webp',
       imageAlt:
         'Fazenda 3D em pixel art do Perfect Valley, com casa, celeiro, lago, lavoura e mina sobre uma ilha flutuante',
       repositoryUrl: 'https://github.com/By2Two/perfect-valley',
@@ -213,7 +213,7 @@ export const CONTENT_PT: PortfolioData = {
       period: 'Fev 2021 — 2027/1',
       status: 'Em andamento',
       description: 'Formatura prevista para o 1º semestre de 2027.',
-      logoUrl: '/images/univali.png',
+      logoUrl: 'images/univali.png',
       logoAlt: 'Logo da UNIVALI',
     },
   ],
