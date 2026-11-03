@@ -52,7 +52,6 @@ export interface UiText {
   readonly contactTitle: string;
   readonly contactText: string;
   readonly builtWith: string;
-  readonly konamiReward: string;
 }
 
 export interface PortfolioData {

@@ -47,7 +47,6 @@ export const CONTENT_PT: PortfolioData = {
     contactText:
       'Estou aberta a novas oportunidades e colaborações.',
     builtWith: 'Feito com Angular.',
-    konamiReward: '+30 vidas! Código Konami ativado',
   },
 
   navLinks: [

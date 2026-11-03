@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { App } from './app';
-import { KonamiCode } from './core/services/konami-code';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -18,12 +17,4 @@ describe('App', () => {
     }
   });
 
-  it('should unlock the Konami reward after the full sequence', () => {
-    const konami = TestBed.inject(KonamiCode);
-    const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
-    sequence.forEach((key) => konami.registerKey(key));
-
-    expect(konami.isUnlocked()).toBeTrue();
-  });
 });
