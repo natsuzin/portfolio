@@ -1,0 +1,27 @@
+@let t = ui();
+
+<section id="experiencia" class="section">
+  <div class="container">
+    <app-section-title
+      [eyebrow]="t.experienceEyebrow"
+      [title]="t.experienceTitle"
+      sprite="flag"
+      [description]="t.experienceDescription"
+    />
+
+    <app-experience-timeline [items]="recent()" />
+
+    @if (previews().length > 0) {
+      <app-see-all
+        link="/experiencia"
+        [title]="t.experienceSeeAllTitle"
+        [text]="t.experienceSeeAllText"
+        [cta]="t.experienceSeeAllCta"
+        [count]="experiences().length"
+        [previews]="previews()"
+        appReveal
+        [revealDelay]="120"
+      />
+    }
+  </div>
+</section>

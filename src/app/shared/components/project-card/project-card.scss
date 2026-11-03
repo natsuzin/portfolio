@@ -1,0 +1,219 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  overflow: hidden;
+  transition:
+    border-color 0.4s ease,
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out);
+}
+
+:host(:hover) {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px -24px color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+  .project__image {
+    transform: scale(1.05);
+  }
+
+  // Window dots light up like a real browser bar
+  .project__window span {
+    &:nth-child(1) {
+      background: #ff6058;
+    }
+
+    &:nth-child(2) {
+      background: #ffbd2e;
+      transition-delay: 0.05s;
+    }
+
+    &:nth-child(3) {
+      background: #28c840;
+      transition-delay: 0.1s;
+    }
+  }
+
+  .project__badge {
+    transform: translateY(-2px) rotate(-4deg);
+  }
+
+  .project__title {
+    color: var(--color-primary);
+  }
+}
+
+.project__preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+// Minimal browser-window bar above the screenshot
+.project__window {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 6px;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-text) 4%, var(--color-surface));
+
+  span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-border-strong);
+    transition: background-color 0.3s ease;
+  }
+}
+
+.project__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.project__badge {
+  position: absolute;
+  top: 2.75rem;
+  right: 0.875rem;
+  z-index: 1;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--color-accent) 60%, transparent);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.project__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.project__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.project__year {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.project__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.project__subtitle {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.project__description {
+  color: var(--color-muted);
+}
+
+.project__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1rem 1.125rem;
+  border-left: 2px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  li {
+    display: flex;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+
+    &::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: 0.55rem;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+  }
+}
+
+.project__highlights-title {
+  font-weight: 700;
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.project__btn {
+  min-height: 2.75rem;
+  padding-inline: 1.125rem;
+  font-size: 0.875rem;
+
+  &:hover .btn__arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+.btn__arrow {
+  display: inline-block;
+  margin-left: -0.25rem;
+  transition: transform 0.3s var(--ease-out);
+}
+
+@media (min-width: 1024px) {
+  :host(.project-card--wide) {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+
+    .project__preview {
+      border-bottom: 0;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .project__image {
+      flex: 1;
+      min-height: 0;
+      aspect-ratio: auto;
+      object-position: right bottom;
+    }
+
+    .project__body {
+      padding: 2rem;
+    }
+  }
+}

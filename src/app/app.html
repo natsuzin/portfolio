@@ -1,0 +1,15 @@
+<a class="skip-link" href="#conteudo" (click)="skipToContent($event, main)">{{ ui().skipLink }}</a>
+
+<app-header />
+
+<main id="conteudo" tabindex="-1" #main>
+  <router-outlet />
+</main>
+
+<app-footer />
+
+<div class="toast-region" role="status" aria-live="polite">
+  @if (konami.isUnlocked()) {
+    <p class="toast label-text">{{ ui().konamiReward }}</p>
+  }
+</div>

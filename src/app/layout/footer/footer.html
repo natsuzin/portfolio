@@ -1,0 +1,36 @@
+@let t = ui();
+
+<footer id="contato" class="footer">
+  <div class="container footer__content">
+    <div class="footer__intro" appReveal>
+      <p class="label-text footer__eyebrow">{{ t.contactEyebrow }}</p>
+      <h2 class="footer__title">{{ t.contactTitle }}</h2>
+      <p class="footer__text">{{ t.contactText }}</p>
+    </div>
+
+    <ul class="footer__contacts">
+      @for (contact of contacts(); track $index; let index = $index) {
+        <li appReveal [revealDelay]="index * 70">
+          <a
+            class="contact"
+            [href]="contact.href"
+            [attr.target]="contact.external ? '_blank' : null"
+            [attr.rel]="contact.external ? 'noopener noreferrer' : null"
+          >
+            <app-contact-icon class="contact__badge" [name]="contact.icon" />
+            <span class="contact__info">
+              <span class="contact__label">{{ contact.label }}</span>
+              <span class="contact__value">{{ contact.value }}</span>
+            </span>
+            <span class="contact__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>&copy; {{ currentYear }} {{ profile().name }}. {{ t.builtWith }}</p>
+    <app-heart-icon [size]="16" />
+  </div>
+</footer>

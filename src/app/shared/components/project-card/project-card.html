@@ -1,0 +1,72 @@
+@let p = project();
+@let t = ui();
+
+<div class="project__preview">
+  <div class="project__window" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <img
+    class="project__image"
+    [ngSrc]="p.imageUrl"
+    [alt]="p.imageAlt"
+    width="960"
+    height="600"
+    [priority]="priority()"
+  />
+  @if (p.badge) {
+    <span class="project__badge label-text">{{ p.badge }}</span>
+  }
+</div>
+
+<div class="project__body">
+  <header class="project__header">
+    <p class="label-text project__year">{{ p.year }}</p>
+    <h3 class="project__title">{{ p.title }}</h3>
+    <p class="project__subtitle">{{ p.subtitle }}</p>
+  </header>
+
+  <p class="project__description">{{ p.description }}</p>
+
+  @if (p.highlights?.length) {
+    <div class="project__highlights">
+      @if (p.highlightsTitle) {
+        <p class="project__highlights-title">{{ p.highlightsTitle }}</p>
+      }
+      <ul>
+        @for (highlight of p.highlights; track $index) {
+          <li>{{ highlight }}</li>
+        }
+      </ul>
+    </div>
+  }
+
+  <ul class="tag-list" [attr.aria-label]="t.technologies">
+    @for (tag of p.tags; track tag) {
+      <li class="tag">{{ tag }}</li>
+    }
+  </ul>
+
+  <div class="project__links">
+    @if (p.liveUrl) {
+      <a
+        class="btn btn--primary project__btn"
+        [href]="p.liveUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ t.viewLive }} <span class="btn__arrow" aria-hidden="true">&#8599;</span>
+        <span class="sr-only">: {{ p.title }}</span>
+      </a>
+    }
+    @if (p.repositoryUrl) {
+      <a
+        class="btn btn--ghost project__btn"
+        [href]="p.repositoryUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ t.viewCode }} <span class="sr-only">: {{ p.title }}</span>
+      </a>
+    }
+  </div>
+</div>

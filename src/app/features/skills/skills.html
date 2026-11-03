@@ -1,0 +1,44 @@
+@let t = ui();
+
+<section id="habilidades" class="section">
+  <div class="container">
+    <app-section-title
+      [eyebrow]="t.skillsEyebrow"
+      [title]="t.skillsTitle"
+      sprite="block"
+      [description]="t.skillsDescription"
+    />
+
+    <div class="skills">
+      @for (group of skillGroups(); track $index; let index = $index) {
+        <article class="skill-group" appReveal [revealDelay]="index * 70">
+          <h3 class="skill-group__title label-text">{{ group.category }}</h3>
+
+          <ul class="skill-list">
+            @for (skill of group.skills; track skill; let tagIndex = $index) {
+              @let icon = icons[skill];
+              @if (icon) {
+                <!-- Logo with a tooltip; the name is also read by screen readers -->
+                <li class="skill" tabindex="0" [style.--tag-index]="tagIndex">
+                  <svg
+                    class="skill__icon"
+                    [attr.viewBox]="icon.viewBox"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    @for (path of icon.paths; track $index) {
+                      <path [attr.d]="path" />
+                    }
+                  </svg>
+                  <span class="skill__tooltip">{{ skill }}</span>
+                </li>
+              } @else {
+                <li class="tag" [style.--tag-index]="tagIndex">{{ skill }}</li>
+              }
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

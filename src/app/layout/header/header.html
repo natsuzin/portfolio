@@ -1,0 +1,85 @@
+@let t = ui();
+
+<header class="header" [class.header--scrolled]="isScrolled() || isMenuOpen()">
+  <div class="container header__inner">
+    <a class="header__logo" [href]="sectionHref('inicio')" (click)="goToSection($event, 'inicio')">
+      <span class="header__monogram" aria-hidden="true">{{ profile().initials }}</span>
+      <span>{{ profile().name }}</span>
+    </a>
+
+    <nav
+      id="main-nav"
+      class="header__nav"
+      [attr.aria-label]="t.mainNav"
+      [class.header__nav--open]="isMenuOpen()"
+    >
+      <ul class="header__list">
+        @for (link of links(); track link.anchor; let index = $index) {
+          <li class="header__item" [style.--item-index]="index">
+            <a
+              class="header__link"
+              [class.header__link--active]="activeSection() === link.anchor"
+              [attr.aria-current]="activeSection() === link.anchor ? 'location' : null"
+              [href]="sectionHref(link.anchor)"
+              (click)="goToSection($event, link.anchor)"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="lang-switch" role="group" [attr.aria-label]="t.languageLabel">
+      <span
+        class="lang-switch__thumb"
+        aria-hidden="true"
+        [class.lang-switch__thumb--end]="locale() === locales[1].code"
+      ></span>
+      @for (option of locales; track option.code) {
+        <button
+          type="button"
+          class="lang-switch__option label-text"
+          [class.lang-switch__option--active]="locale() === option.code"
+          [attr.aria-pressed]="locale() === option.code"
+          [attr.lang]="option.code"
+          [attr.aria-label]="option.name"
+          (click)="setLocale(option.code)"
+        >
+          {{ option.label }}
+        </button>
+      }
+    </div>
+
+    <button
+      class="header__toggle"
+      type="button"
+      aria-controls="main-nav"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="sr-only">{{ isMenuOpen() ? t.closeMenu : t.openMenu }}</span>
+      <span class="header__toggle-bar" aria-hidden="true"></span>
+      <span class="header__toggle-bar" aria-hidden="true"></span>
+      <span class="header__toggle-bar" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <span
+    class="header__progress"
+    aria-hidden="true"
+    [style.transform]="'scaleX(' + scrollProgress() + ')'"
+  ></span>
+</header>
+
+<button
+  type="button"
+  class="back-to-top"
+  [class.back-to-top--visible]="showBackToTop()"
+  [attr.tabindex]="showBackToTop() ? null : -1"
+  [attr.aria-hidden]="showBackToTop() ? null : 'true'"
+  (click)="scrollToTop()"
+>
+  <span aria-hidden="true">&uarr;</span>
+  <span class="sr-only">{{ t.backToTop }}</span>
+</button>

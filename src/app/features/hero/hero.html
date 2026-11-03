@@ -1,0 +1,59 @@
+@let p = profile();
+@let t = ui();
+
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="hero__eyebrow label-text">
+        <span class="hero__dot" aria-hidden="true"></span>
+        {{ p.location }}
+      </p>
+
+      <h1 id="hero-title" class="hero__title">
+        {{ t.heroGreeting }} <span class="hero__name">{{ p.name }}</span>
+      </h1>
+      <p class="hero__role">{{ p.role }}</p>
+
+      <div class="hero__summary">
+        @for (paragraph of p.summary; track $index) {
+          <p>{{ paragraph }}</p>
+        }
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#experiencia">{{ t.heroPrimaryCta }}</a>
+        <a class="btn btn--ghost" href="#contato">{{ t.heroSecondaryCta }}</a>
+      </div>
+    </div>
+
+    <figure class="hero__portrait" appReveal [revealDelay]="350">
+      <div class="hero__frame">
+        <span class="hero__photo-clip">
+          <img
+            class="hero__photo"
+            [ngSrc]="p.photoUrl"
+            [alt]="p.photoAlt"
+            width="400"
+            height="400"
+            priority
+          />
+        </span>
+        <span class="hero__corner hero__corner--tl" aria-hidden="true"></span>
+        <span class="hero__corner hero__corner--br" aria-hidden="true"></span>
+      </div>
+
+      <app-heart-icon class="hero__sprite" [size]="26" />
+
+      <figcaption class="hero__facts">
+        <dl>
+          @for (fact of p.facts; track $index) {
+            <div class="fact">
+              <dt class="fact__label label-text">{{ fact.label }}</dt>
+              <dd class="fact__value">{{ fact.value }}</dd>
+            </div>
+          }
+        </dl>
+      </figcaption>
+    </figure>
+  </div>
+</section>

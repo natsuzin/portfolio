@@ -1,0 +1,30 @@
+<ol class="timeline">
+  @for (item of items(); track $index; let index = $index; let isFirst = $first) {
+    <li class="timeline__item" appReveal [revealDelay]="index * 100">
+      <span
+        class="timeline__marker"
+        [class.timeline__marker--current]="isFirst"
+        aria-hidden="true"
+      ></span>
+
+      <article class="timeline__card">
+        <header class="timeline__header">
+          <p class="label-text timeline__period">{{ item.period }}</p>
+          <h3 class="timeline__role">{{ item.role }}</h3>
+          <p class="timeline__company">
+            {{ item.company }}
+            <span class="timeline__location">&middot; {{ item.location }}</span>
+          </p>
+        </header>
+
+        <p class="timeline__description">{{ item.description }}</p>
+
+        <ul class="timeline__highlights">
+          @for (highlight of item.highlights; track $index) {
+            <li>{{ highlight }}</li>
+          }
+        </ul>
+      </article>
+    </li>
+  }
+</ol>

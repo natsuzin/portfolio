@@ -1,0 +1,149 @@
+.footer {
+  position: relative;
+  margin-top: 4rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.footer__content {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 3.5rem;
+}
+
+.footer__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 34rem;
+}
+
+.footer__eyebrow {
+  color: var(--color-accent);
+}
+
+.footer__title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.footer__text {
+  color: var(--color-muted);
+}
+
+.footer__contacts {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 2rem 0.875rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  transition:
+    border-color 0.3s ease,
+    transform 0.45s var(--ease-out),
+    box-shadow 0.45s var(--ease-out);
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -20px color-mix(in srgb, var(--color-primary) 55%, transparent);
+
+    .contact__badge {
+      transform: rotate(-8deg) scale(1.08);
+      border-color: var(--color-primary);
+      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+      color: var(--color-primary);
+    }
+
+    .contact__arrow {
+      opacity: 1;
+      transform: none;
+      color: var(--color-primary);
+    }
+  }
+}
+
+.contact__badge {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5625rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  // Outline icon in white at rest, green on hover (no brand artwork)
+  color: var(--color-text);
+  transition:
+    transform 0.45s var(--ease-out),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.contact__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact__arrow {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.75rem;
+  font-size: 1rem;
+  color: var(--color-muted);
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s var(--ease-out),
+    color 0.3s ease;
+}
+
+.contact__label {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.contact__value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  // Breaks only when a value truly doesn't fit (very narrow screens)
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .footer__contacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__content {
+    grid-template-columns: 0.8fr 1.5fr;
+    align-items: center;
+  }
+}

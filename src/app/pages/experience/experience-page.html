@@ -1,0 +1,19 @@
+@let t = ui();
+
+<section class="section subpage" id="experiencia-lista">
+  <div class="container">
+    <a class="back-link" routerLink="/" fragment="experiencia">
+      <span class="back-link__arrow" aria-hidden="true">&larr;</span>
+      {{ t.backToHome }}
+    </a>
+
+    <app-section-title
+      [eyebrow]="t.allExperienceEyebrow"
+      [title]="t.allExperienceTitle"
+      sprite="flag"
+      [description]="t.allExperienceDescription"
+    />
+
+    <app-experience-timeline [items]="experiences()" />
+  </div>
+</section>

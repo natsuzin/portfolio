@@ -1,0 +1,265 @@
+// "See all" link: text on the left, previews flush with the section's right edge,
+// and a dotted trail stretching between them. No box or background.
+:host {
+  // Preview size and spread (smaller on phones, see the media query below)
+  --thumb-w: 11rem;
+  --thumb-step: 2rem;
+  --thumb-fan: 2.75rem;
+  --stack-h: 8.5rem;
+
+  display: block;
+  margin-top: 2.5rem;
+}
+
+.see-all {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+
+  &:hover,
+  &:focus-visible {
+    // The trail turns orange and its dots start walking toward the previews
+    .see-all__trail {
+      stroke: var(--color-accent);
+      animation: trail-walk 0.9s linear infinite;
+    }
+
+    .see-all__trail-end {
+      background: var(--color-accent);
+      transform: translateY(-50%) scale(1.4);
+    }
+
+    .see-all__arrow {
+      transform: translateX(6px);
+    }
+
+    // The link (and its counter) switch from green to the accent orange
+    .see-all__cta {
+      color: var(--color-accent);
+    }
+
+    .see-all__count {
+      background: var(--color-accent);
+    }
+
+    .see-all__title {
+      color: var(--color-primary);
+    }
+
+    // Thumbnails fan out to the left, the front one stays on the edge
+    .see-all__thumb {
+      transform: translateX(calc((var(--thumb-index) - var(--thumb-last)) * var(--thumb-fan)))
+        rotate(calc(-6deg + var(--thumb-index) * 6deg)) translateY(-4px);
+    }
+  }
+}
+
+.see-all__text {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.see-all__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.see-all__description {
+  color: var(--color-muted);
+}
+
+.see-all__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.see-all__count {
+  display: grid;
+  place-items: center;
+  min-width: 1.625rem;
+  height: 1.625rem;
+  padding-inline: 0.375rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  transition: background-color 0.3s ease;
+}
+
+.see-all__arrow {
+  font-size: 1.25rem;
+  transition: transform 0.4s var(--ease-out);
+}
+
+// Grows to fill whatever space is left between the text and the previews
+.see-all__path {
+  position: relative;
+  display: block;
+  flex: 1 1 4rem;
+  min-width: 4rem;
+  height: var(--stack-h);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+}
+
+// Two shapes: a wave between text and previews on wide screens, and on phones a
+// curve that drops from the link below the text and winds over to the previews
+.see-all__path .see-all__curve--wide {
+  display: none;
+}
+
+.see-all__trail {
+  stroke: var(--color-border-strong);
+  stroke-width: 3;
+  stroke-linecap: round;
+  // Zero-length dashes with round caps render as dots; non-scaling keeps them
+  // round and evenly spaced however much the trail is stretched
+  stroke-dasharray: 0 11;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.3s ease;
+}
+
+.see-all__trail-end {
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  transform: translateY(-50%);
+  transition:
+    background-color 0.3s ease,
+    transform 0.4s var(--ease-out);
+}
+
+@keyframes trail-walk {
+  to {
+    stroke-dashoffset: -11;
+  }
+}
+
+// Phones and tablets: text on its own row, then trail + smaller previews below it
+@media (max-width: 899.98px) {
+  :host {
+    --thumb-w: 10rem;
+    --thumb-step: 1.5rem;
+    --thumb-fan: 2rem;
+    --stack-h: 7.5rem;
+  }
+
+  .see-all {
+    gap: 0.75rem 1rem;
+  }
+
+  .see-all__text {
+    flex-basis: 100%;
+  }
+}
+
+@media (min-width: 900px) {
+  .see-all {
+    flex-wrap: nowrap;
+  }
+
+  .see-all__path {
+    flex-basis: 6rem;
+    min-width: 6rem;
+    height: 5rem;
+  }
+
+  .see-all__path .see-all__curve--wide {
+    display: block;
+  }
+
+  .see-all__path .see-all__curve--compact {
+    display: none;
+  }
+}
+
+// Width covers the fanned-out (hover) state so nothing crosses the section edge
+.see-all__stack {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  // Keeps the previews on the right edge even when they wrap below the text
+  margin-left: auto;
+  width: calc(var(--thumb-w) + var(--thumb-last, 0) * var(--thumb-fan));
+  height: var(--stack-h);
+}
+
+.see-all__thumb {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  width: var(--thumb-w);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  overflow: hidden;
+  box-shadow: 0 16px 32px -16px rgb(0 0 0 / 70%);
+  transform: translateX(calc((var(--thumb-index) - var(--thumb-last)) * var(--thumb-step)))
+    rotate(calc(-4deg + var(--thumb-index) * 4deg));
+  transition: transform 0.6s var(--ease-out);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+// Text card used when a preview has no screenshot (e.g. past jobs)
+.see-all__note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  aspect-ratio: 16 / 10;
+  padding: 0.75rem 0.875rem;
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-primary);
+}
+
+.see-all__note-eyebrow {
+  font-size: 0.625rem;
+  color: var(--color-accent);
+}
+
+.see-all__note-title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.see-all__note-caption {
+  overflow: hidden;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

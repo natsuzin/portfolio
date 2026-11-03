@@ -1,0 +1,33 @@
+@let t = ui();
+
+<section id="formacao" class="section">
+  <div class="container">
+    <app-section-title [eyebrow]="t.educationEyebrow" [title]="t.educationTitle" sprite="trophy" />
+
+    <ul class="education">
+      @for (item of education(); track $index; let index = $index) {
+        <li class="degree" appReveal [revealDelay]="index * 80">
+          <!-- The logo is used as a mask so it takes the theme color (and turns green on hover) -->
+          <span class="degree__logo">
+            <span
+              class="degree__logo-mark"
+              role="img"
+              [attr.aria-label]="item.logoAlt"
+              [style.--logo-url]="'url(' + item.logoUrl + ')'"
+            ></span>
+          </span>
+
+          <div class="degree__content">
+            <p class="degree__meta">
+              <span class="degree__status label-text">{{ item.status }}</span>
+              <span class="label-text degree__period">{{ item.period }}</span>
+            </p>
+            <h3 class="degree__course">{{ item.course }}</h3>
+            <p class="degree__institution">{{ item.institution }}</p>
+            <p class="degree__description">{{ item.description }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

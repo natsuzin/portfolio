@@ -1,0 +1,31 @@
+.toast-region {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+  animation: pop-in 0.25s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+main:focus {
+  outline: none;
+}

@@ -1,0 +1,43 @@
+<a class="see-all" [routerLink]="link()">
+  <span class="see-all__text">
+    <span class="see-all__title">{{ title() }}</span>
+    <span class="see-all__description">{{ text() }}</span>
+    <span class="see-all__cta">
+      {{ cta() }}
+      <span class="see-all__count label-text">{{ count() }}</span>
+      <span class="see-all__arrow" aria-hidden="true">&rarr;</span>
+    </span>
+  </span>
+
+  <!-- Dotted, winding trail that stretches from the text to the previews -->
+  <span class="see-all__path" aria-hidden="true">
+    <svg class="see-all__curve--wide" viewBox="0 0 200 80" preserveAspectRatio="none" fill="none">
+      <path class="see-all__trail" d="M0 40 Q 25 12 50 40 T 100 40 T 150 40 T 200 40" />
+    </svg>
+    <svg class="see-all__curve--compact" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
+      <path class="see-all__trail" d="M3 0 C 3 40, 20 72, 45 62 S 80 34, 100 50" />
+    </svg>
+    <span class="see-all__trail-end"></span>
+  </span>
+
+  @let items = thumbs();
+  <span class="see-all__stack" aria-hidden="true" [style.--thumb-last]="items.length - 1">
+    @for (item of items; track $index; let index = $index) {
+      <span class="see-all__thumb" [style.--thumb-index]="index">
+        @if (item.imageUrl) {
+          <img [ngSrc]="item.imageUrl" alt="" width="960" height="600" />
+        } @else {
+          <span class="see-all__note">
+            @if (item.eyebrow) {
+              <span class="see-all__note-eyebrow label-text">{{ item.eyebrow }}</span>
+            }
+            <span class="see-all__note-title">{{ item.title }}</span>
+            @if (item.caption) {
+              <span class="see-all__note-caption">{{ item.caption }}</span>
+            }
+          </span>
+        }
+      </span>
+    }
+  </span>
+</a>

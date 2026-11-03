@@ -1,0 +1,30 @@
+@let t = ui();
+
+<section class="section subpage" id="projetos-lista">
+  <div class="container">
+    <a class="back-link" routerLink="/" fragment="projetos">
+      <span class="back-link__arrow" aria-hidden="true">&larr;</span>
+      {{ t.backToHome }}
+    </a>
+
+    <app-section-title
+      [eyebrow]="t.allProjectsEyebrow"
+      [title]="t.allProjectsTitle"
+      sprite="invader"
+      [description]="t.allProjectsDescription"
+    />
+
+    <ul class="project-grid">
+      @for (project of projects(); track project.imageUrl; let index = $index) {
+        <li
+          class="project-grid__item"
+          [class.project-grid__item--wide]="isWide(project)"
+          appReveal
+          [revealDelay]="index * 80"
+        >
+          <app-project-card [project]="project" [wide]="isWide(project)" [priority]="index === 0" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>

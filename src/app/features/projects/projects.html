@@ -1,0 +1,36 @@
+@let t = ui();
+@let total = projects().length;
+
+@if (total > 0) {
+  <section id="projetos" class="section">
+    <div class="container">
+      <app-section-title
+        [eyebrow]="t.projectsEyebrow"
+        [title]="t.projectsTitle"
+        sprite="invader"
+        [description]="t.projectsDescription"
+      />
+
+      <ul class="project-grid">
+        @for (project of highlighted(); track $index; let index = $index) {
+          <li class="project-grid__item--wide" appReveal [revealDelay]="index * 80">
+            <app-project-card [project]="project" [wide]="true" />
+          </li>
+        }
+      </ul>
+
+      @if (previews().length > 0) {
+        <app-see-all
+          link="/projetos"
+          [title]="t.seeAllTitle"
+          [text]="t.seeAllText"
+          [cta]="t.seeAllCta"
+          [count]="total"
+          [previews]="previews()"
+          appReveal
+          [revealDelay]="120"
+        />
+      }
+    </div>
+  </section>
+}
