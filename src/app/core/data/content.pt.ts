@@ -236,10 +236,10 @@ export const CONTENT_PT: PortfolioData = {
       external: false,
     },
     {
-      label: 'WhatsApp',
-      value: '+55 (48) 99644-8127',
-      href: 'https://wa.me/5548996448127',
-      icon: 'whatsapp',
+      label: 'Currículo',
+      value: 'Baixar PDF',
+      href: 'curriculo/nathalia-suzin-pt.pdf',
+      icon: 'resume',
       external: true,
     },
     {

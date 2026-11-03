@@ -47,7 +47,7 @@ src/app/core/data/content.en.ts   # inglês
 
 URLs, imagens e nomes são definidos em `content.pt.ts` e reaproveitados em `content.en.ts`, que traduz só os textos.
 
-As imagens ficam em `public/images/`: foto de perfil (`nathalia.jpg`), capturas dos projetos (`projects/*.webp`), ícones de contato (`icons/`) e logo da universidade. Cores, fontes, raios e espaçamentos são tokens CSS em `src/styles.scss`.
+As imagens ficam em `public/images/`: foto de perfil (`nathalia.jpg`), capturas dos projetos (`projects/*.webp`), ícones de contato (`icons/`) e logo da universidade. O currículo em PDF fica em `public/curriculo/` (`nathalia-suzin-pt.pdf` e `nathalia-suzin-en.pdf`). Cores, fontes, raios e espaçamentos são tokens CSS em `src/styles.scss`.
 
 ## Estrutura
 
@@ -59,7 +59,7 @@ src/app
 │   └── services/      # PortfolioContent (conteúdo + idioma)
 ├── layout
 │   ├── header/        # navegação, seletor de idioma e menu mobile
-│   └── footer/        # contatos: e-mail, WhatsApp, GitHub e LinkedIn
+│   └── footer/        # contatos: e-mail, currículo em PDF, GitHub e LinkedIn
 ├── pages
 │   ├── home/          # página inicial
 │   ├── projects/      # todos os projetos

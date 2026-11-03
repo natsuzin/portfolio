@@ -130,7 +130,7 @@ export interface SkillGroup {
   readonly skills: readonly string[];
 }
 
-export type ContactIconName = 'email' | 'whatsapp' | 'github' | 'linkedin';
+export type ContactIconName = 'email' | 'resume' | 'github' | 'linkedin';
 
 export interface ContactLink {
   readonly label: string;

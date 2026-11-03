@@ -204,7 +204,13 @@ export const CONTENT_EN: PortfolioData = {
     { category: 'Languages', skills: ['Portuguese (native)', 'English (advanced)'] },
   ],
 
-  contactLinks: CONTENT_PT.contactLinks.map((link) =>
-    link.label === 'E-mail' ? { ...link, label: 'Email' } : link,
-  ),
+  contactLinks: CONTENT_PT.contactLinks.map((link) => {
+    if (link.icon === 'email') {
+      return { ...link, label: 'Email' };
+    }
+    if (link.icon === 'resume') {
+      return { ...link, label: 'Resume', value: 'Download PDF', href: 'curriculo/nathalia-suzin-en.pdf' };
+    }
+    return link;
+  }),
 };
