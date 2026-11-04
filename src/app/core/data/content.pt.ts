@@ -229,18 +229,18 @@ export const CONTENT_PT: PortfolioData = {
 
   contactLinks: [
     {
-      label: 'E-mail',
-      value: 'natsuzin22@gmail.com',
-      href: 'mailto:natsuzin22@gmail.com',
-      icon: 'email',
-      external: false,
-    },
-    {
       label: 'Currículo',
       value: 'Baixar PDF',
       href: 'curriculo/nathalia-suzin-pt.pdf',
       icon: 'resume',
       external: true,
+    },
+    {
+      label: 'E-mail',
+      value: 'natsuzin22@gmail.com',
+      href: 'mailto:natsuzin22@gmail.com',
+      icon: 'email',
+      external: false,
     },
     {
       label: 'GitHub',
