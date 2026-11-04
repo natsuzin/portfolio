@@ -28,7 +28,6 @@ export interface UiText {
   readonly viewLive: string;
   readonly viewCode: string;
   readonly seeAllTitle: string;
-  readonly seeAllText: string;
   readonly seeAllCta: string;
   readonly allProjectsEyebrow: string;
   readonly allProjectsTitle: string;
@@ -38,13 +37,24 @@ export interface UiText {
   readonly experienceTitle: string;
   readonly experienceDescription: string;
   readonly experienceSeeAllTitle: string;
-  readonly experienceSeeAllText: string;
   readonly experienceSeeAllCta: string;
   readonly allExperienceEyebrow: string;
   readonly allExperienceTitle: string;
   readonly allExperienceDescription: string;
   readonly educationEyebrow: string;
   readonly educationTitle: string;
+  readonly publicationsEyebrow: string;
+  readonly publicationsTitle: string;
+  readonly publicationsDescription: string;
+  readonly publicationsSeeAllTitle: string;
+  readonly publicationsSeeAllCta: string;
+  readonly allPublicationsEyebrow: string;
+  readonly allPublicationsTitle: string;
+  readonly allPublicationsDescription: string;
+  readonly publicationTypes: Readonly<Record<PublicationType, string>>;
+  readonly viewPaper: string;
+  readonly doiLabel: string;
+  readonly opensInNewTab: string;
   readonly skillsEyebrow: string;
   readonly skillsTitle: string;
   readonly skillsDescription: string;
@@ -61,6 +71,7 @@ export interface PortfolioData {
   readonly projects: readonly Project[];
   readonly experiences: readonly Experience[];
   readonly education: readonly Education[];
+  readonly publications: readonly Publication[];
   readonly skillGroups: readonly SkillGroup[];
   readonly contactLinks: readonly ContactLink[];
 }
@@ -104,6 +115,14 @@ export interface Project {
   readonly highlights?: readonly string[];
   readonly repositoryUrl?: string;
   readonly liveUrl?: string;
+  /** Badge linking to the publications section, e.g. "Published in JICS 2026". */
+  readonly publication?: ProjectPublication;
+}
+
+export interface ProjectPublication {
+  readonly label: string;
+  /** Screen-reader name: starts with the visible label, then says where the link goes. */
+  readonly ariaLabel: string;
 }
 
 export interface Experience {
@@ -123,6 +142,22 @@ export interface Education {
   readonly description: string;
   readonly logoUrl: string;
   readonly logoAlt: string;
+}
+
+export type PublicationType = 'journal' | 'conference';
+
+export interface Publication {
+  readonly title: string;
+  readonly authors: readonly string[];
+  readonly venue: string;
+  /** Volume, pages, location, special issue… shown after the venue. */
+  readonly details: string;
+  readonly year: number;
+  readonly type: PublicationType;
+  /** Official page of the paper (publisher or digital library); used when there is no DOI. */
+  readonly pageUrl?: string;
+  /** Bare DOI, e.g. "10.29292/jics.v21i2.1179". Shown as text; "View paper" links to it. */
+  readonly doi?: string;
 }
 
 export interface SkillGroup {

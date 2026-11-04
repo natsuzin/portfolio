@@ -293,7 +293,8 @@
   }
 }
 
-@media (min-width: 900px) {
+// Inline nav only where all links fit next to the name and language switch
+@media (min-width: 1024px) {
   .header__toggle {
     display: none;
   }

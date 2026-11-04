@@ -1,0 +1,44 @@
+@let p = publication();
+@let t = ui();
+
+<article class="publication">
+  <p class="publication__meta">
+    <span class="publication__type label-text" [class]="'publication__type--' + p.type">
+      {{ t.publicationTypes[p.type] }}
+    </span>
+    <span class="label-text publication__year">{{ p.year }}</span>
+  </p>
+
+  <h3 class="publication__title">{{ p.title }}</h3>
+
+  <p class="publication__authors">
+    @for (author of p.authors; track $index; let last = $last) {
+      @if (author === ownerName()) {
+        <strong class="publication__owner">{{ author }}</strong>
+      } @else {
+        <span>{{ author }}</span>
+      }
+      @if (!last) {
+        <span>, </span>
+      }
+    }
+  </p>
+
+  <p class="publication__venue">
+    <span class="publication__venue-name">{{ p.venue }}</span>
+    <span class="publication__details">{{ p.details }}</span>
+    <!-- Reference only (selectable to cite); the button below already opens the paper -->
+    @if (p.doi) {
+      <span class="publication__doi">{{ t.doiLabel }} {{ p.doi }}</span>
+    }
+  </p>
+
+  @if (paperUrl(); as url) {
+    <div class="publication__links">
+      <a class="btn btn--primary publication__btn" [href]="url" target="_blank" rel="noopener noreferrer">
+        {{ t.viewPaper }} <span class="publication__arrow" aria-hidden="true">&#8599;</span>
+        <span class="sr-only">: {{ p.title }} ({{ t.opensInNewTab }})</span>
+      </a>
+    </div>
+  }
+</article>

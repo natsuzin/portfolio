@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core
 
 import { Project } from '../../../core/models/portfolio.models';
 import { PortfolioContent } from '../../../core/services/portfolio-content';
+import { SectionBadge } from '../section-badge/section-badge';
 
 /** A single project: preview screenshot, description, highlights, tags and links. */
 @Component({
   selector: 'app-project-card',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, SectionBadge],
   templateUrl: './project-card.html',
   styleUrl: './project-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,0 +1,25 @@
+@let t = ui();
+
+<section class="section subpage" id="publications-lista">
+  <div class="container">
+    <a class="back-link" routerLink="/" fragment="publications">
+      <span class="back-link__arrow" aria-hidden="true">&larr;</span>
+      {{ t.backToHome }}
+    </a>
+
+    <app-section-title
+      [eyebrow]="t.allPublicationsEyebrow"
+      [title]="t.allPublicationsTitle"
+      sprite="star"
+      [description]="t.allPublicationsDescription"
+    />
+
+    <ol class="publications">
+      @for (publication of publications(); track publication.title; let index = $index) {
+        <li appReveal [revealDelay]="index * 80">
+          <app-publication-card [publication]="publication" />
+        </li>
+      }
+    </ol>
+  </div>
+</section>

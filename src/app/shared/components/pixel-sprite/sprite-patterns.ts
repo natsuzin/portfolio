@@ -36,7 +36,7 @@ export const SPRITE_PATTERNS: Record<SpriteName, readonly string[]> = {
     '.aaaaaa.',
     '..aaaa..',
   ],
-  star: ['...t...', '..ttt..', 'ttttttt', '.ttttt.', '..ttt..', '.tt.tt.', 't.....t'],
+  star: ['...p...', '..ppp..', 'ppppppp', '.ppppp.', '..ppp..', '.pp.pp.', 'p.....p'],
   trophy: [
     'pppppppp',
     'p.pppp.p',

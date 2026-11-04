@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,6 +12,7 @@ import { filter } from 'rxjs';
 
 import { Locale } from '../../core/models/portfolio.models';
 import { PortfolioContent } from '../../core/services/portfolio-content';
+import { SectionNavigation } from '../../core/services/section-navigation';
 
 const SCROLL_THRESHOLD_PX = 12;
 /** A section becomes "active" once its top passes this fraction of the viewport. */
@@ -33,7 +33,7 @@ const BACK_TO_TOP_RATIO = 0.8;
 export class Header {
   private readonly content = inject(PortfolioContent);
   private readonly router = inject(Router);
-  private readonly location = inject(Location);
+  private readonly sections = inject(SectionNavigation);
   private frameId = 0;
   /** Path of the current sub-page (e.g. "projetos"), empty on the home page. */
   private subpage = '';
@@ -67,8 +67,7 @@ export class Header {
 
   /** Real URL for each link, so "open in new tab" and middle-click keep working. */
   protected sectionHref(anchor: string): string {
-    const tree = this.router.createUrlTree(['/'], { fragment: anchor });
-    return this.location.prepareExternalUrl(this.router.serializeUrl(tree));
+    return this.sections.href(anchor);
   }
 
   /**
@@ -76,17 +75,8 @@ export class Header {
    * otherwise goes back to the home page and lands on it.
    */
   protected goToSection(event: MouseEvent, anchor: string): void {
-    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
-      return;
-    }
-    event.preventDefault();
-    this.closeMenu();
-
-    const target = document.getElementById(anchor);
-    if (target) {
-      target.scrollIntoView();
-    } else {
-      this.router.navigate(['/'], { fragment: anchor });
+    if (this.sections.go(event, anchor)) {
+      this.closeMenu();
     }
   }
 

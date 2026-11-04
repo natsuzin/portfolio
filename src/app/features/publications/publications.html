@@ -1,0 +1,34 @@
+@let t = ui();
+
+@if (publications().length > 0) {
+  <section id="publications" class="section">
+    <div class="container">
+      <app-section-title
+        [eyebrow]="t.publicationsEyebrow"
+        [title]="t.publicationsTitle"
+        sprite="star"
+        [description]="t.publicationsDescription"
+      />
+
+      <ol class="publications">
+        @for (publication of recent(); track publication.title; let index = $index) {
+          <li appReveal [revealDelay]="index * 80">
+            <app-publication-card [publication]="publication" />
+          </li>
+        }
+      </ol>
+
+      @if (previews().length > 0) {
+        <app-see-all
+          link="/publications"
+          [title]="t.publicationsSeeAllTitle"
+          [cta]="t.publicationsSeeAllCta"
+          [count]="publications().length"
+          [previews]="previews()"
+          appReveal
+          [revealDelay]="120"
+        />
+      }
+    </div>
+  </section>
+}

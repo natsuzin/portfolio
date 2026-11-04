@@ -27,7 +27,6 @@ const MAX_PREVIEWS = 3;
 export class SeeAll {
   readonly link = input.required<string>();
   readonly title = input.required<string>();
-  readonly text = input.required<string>();
   readonly cta = input.required<string>();
   readonly count = input.required<number>();
   readonly previews = input<readonly SeeAllPreview[]>([]);

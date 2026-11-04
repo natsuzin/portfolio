@@ -3,6 +3,7 @@ import { CONTENT_PT } from './content.pt';
 
 /** Values that are identical in every language (URLs, images, names). */
 const [AERIS_PT, IDENERGY_PT, ENADE_PT, VALLEY_PT] = CONTENT_PT.projects;
+const [JICS_PT, SEPOC_PT] = CONTENT_PT.publications;
 
 export const CONTENT_EN: PortfolioData = {
   ui: {
@@ -25,7 +26,6 @@ export const CONTENT_EN: PortfolioData = {
     viewLive: 'View live',
     viewCode: 'Code on GitHub',
     seeAllTitle: 'Want to see more?',
-    seeAllText: 'Browse every project on a single page.',
     seeAllCta: 'See all projects',
     allProjectsEyebrow: 'Portfolio',
     allProjectsTitle: 'All projects',
@@ -36,13 +36,24 @@ export const CONTENT_EN: PortfolioData = {
     experienceTitle: 'Work experience',
     experienceDescription: "Where I've been and how I contributed.",
     experienceSeeAllTitle: 'Full journey',
-    experienceSeeAllText: 'See every role, all the way back to my first job.',
     experienceSeeAllCta: 'See all experience',
     allExperienceEyebrow: 'Journey',
     allExperienceTitle: 'All work experience',
     allExperienceDescription: "From my first job to my current role: where I've been and what I built at each step.",
     educationEyebrow: 'Education',
     educationTitle: 'Academic background',
+    publicationsEyebrow: 'Publications',
+    publicationsTitle: 'Published papers',
+    publicationsDescription: 'Research on teaching computer architecture with RISC-V.',
+    publicationsSeeAllTitle: 'More publications',
+    publicationsSeeAllCta: 'See all publications',
+    allPublicationsEyebrow: 'Publications',
+    allPublicationsTitle: 'All publications',
+    allPublicationsDescription: 'Journal and conference papers, from the most recent to the oldest.',
+    publicationTypes: { journal: 'Journal', conference: 'Conference' },
+    viewPaper: 'View paper',
+    doiLabel: 'DOI',
+    opensInNewTab: 'opens in a new tab',
     skillsEyebrow: 'Stack',
     skillsTitle: 'Skills',
     skillsDescription: 'Technologies, tools and methods.',
@@ -58,6 +69,7 @@ export const CONTENT_EN: PortfolioData = {
     { label: 'Projects', anchor: 'projetos' },
     { label: 'Experience', anchor: 'experiencia' },
     { label: 'Education', anchor: 'formacao' },
+    { label: 'Publications', anchor: 'publications' },
     { label: 'Skills', anchor: 'habilidades' },
     { label: 'Contact', anchor: 'contato' },
   ],
@@ -192,6 +204,21 @@ export const CONTENT_EN: PortfolioData = {
       status: 'In progress',
       description: 'Expected graduation in the first semester of 2027.',
       logoAlt: 'UNIVALI logo',
+    },
+  ],
+
+  // Original (official) titles
+  publications: [
+    {
+      ...JICS_PT,
+      title: 'Analysis of RISC-V Assembly Language Teaching Using an Interactive Web Simulator',
+      details: 'v. 21, n. 2, pp. 1–10, 2026 · Special Issue on RISC-V Processor',
+    },
+    {
+      ...SEPOC_PT,
+      title: 'Interactive Simulator for RISC-V Assembly Programming',
+      venue: '17th Seminar on Power Electronics and Control (SEPOC 2025)',
+      details: 'Balneário Camboriú, Brazil, pp. 1–8, 2025',
     },
   ],
 

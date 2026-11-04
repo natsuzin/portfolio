@@ -21,7 +21,6 @@ export const CONTENT_PT: PortfolioData = {
     viewLive: 'Ver online',
     viewCode: 'Código no GitHub',
     seeAllTitle: 'Quer ver mais?',
-    seeAllText: 'Confira todos os projetos em uma página só.',
     seeAllCta: 'Ver todos os projetos',
     allProjectsEyebrow: 'Portfólio',
     allProjectsTitle: 'Todos os projetos',
@@ -32,13 +31,24 @@ export const CONTENT_PT: PortfolioData = {
     experienceTitle: 'Experiência profissional',
     experienceDescription: 'Por onde passei e minhas contribuições.',
     experienceSeeAllTitle: 'Trajetória completa',
-    experienceSeeAllText: 'Veja todas as experiências, desde o meu primeiro emprego.',
     experienceSeeAllCta: 'Ver todas as experiências',
     allExperienceEyebrow: 'Trajetória',
     allExperienceTitle: 'Toda a experiência profissional',
     allExperienceDescription: 'Do primeiro emprego ao trabalho atual, por onde passei e o que construí em cada etapa.',
     educationEyebrow: 'Formação',
     educationTitle: 'Formação acadêmica',
+    publicationsEyebrow: 'Publicações',
+    publicationsTitle: 'Artigos publicados',
+    publicationsDescription: 'Pesquisa sobre o ensino de arquitetura de computadores com RISC-V.',
+    publicationsSeeAllTitle: 'Mais publicações',
+    publicationsSeeAllCta: 'Ver todas as publicações',
+    allPublicationsEyebrow: 'Publicações',
+    allPublicationsTitle: 'Todas as publicações',
+    allPublicationsDescription: 'Artigos em periódicos e conferências, do mais recente ao mais antigo.',
+    publicationTypes: { journal: 'Periódico', conference: 'Conferência' },
+    viewPaper: 'Ver artigo',
+    doiLabel: 'DOI',
+    opensInNewTab: 'abre em nova aba',
     skillsEyebrow: 'Stack',
     skillsTitle: 'Habilidades',
     skillsDescription: 'Tecnologias, ferramentas e métodos.',
@@ -54,6 +64,7 @@ export const CONTENT_PT: PortfolioData = {
     { label: 'Projetos', anchor: 'projetos' },
     { label: 'Experiência', anchor: 'experiencia' },
     { label: 'Formação', anchor: 'formacao' },
+    { label: 'Publicações', anchor: 'publications' },
     { label: 'Habilidades', anchor: 'habilidades' },
     { label: 'Contato', anchor: 'contato' },
   ],
@@ -215,6 +226,35 @@ export const CONTENT_PT: PortfolioData = {
       description: 'Formatura prevista para o 1º semestre de 2027.',
       logoUrl: 'images/univali.png',
       logoAlt: 'Logo da UNIVALI',
+    },
+  ],
+
+  /**
+   * Artigos exibidos em "Publicações", em qualquer ordem (o site ordena do mais
+   * recente para o mais antigo; a página inicial mostra só o primeiro). Os artigos foram publicados em inglês:
+   * aqui título e detalhes estão traduzidos; o original fica em content.en.ts.
+   */
+  publications: [
+    {
+      title:
+        'Análise do Ensino da Linguagem de Montagem RISC-V com um Simulador Web Interativo',
+      authors: ['Eduardo Souza', 'Nathalia Suzin', 'Cesar Zeferino', 'Douglas Melo'],
+      venue: 'Journal of Integrated Circuits and Systems (JICS)',
+      details: 'v. 21, n. 2, p. 1–10, 2026 · Edição especial sobre processadores RISC-V',
+      year: 2026,
+      type: 'journal',
+      pageUrl: 'https://jics.org.br/ojs/index.php/JICS/article/view/1179',
+      doi: '10.29292/jics.v21i2.1179',
+    },
+    {
+      title: 'Simulador Interativo para Programação em Linguagem de Montagem RISC-V',
+      authors: ['Eduardo M. D. Souza', 'Nathalia Suzin', 'Cesar A. Zeferino', 'Douglas R. Melo'],
+      venue: '17º Seminário de Eletrônica de Potência e Controle (SEPOC 2025)',
+      details: 'Balneário Camboriú, Brasil, p. 1–8, 2025',
+      year: 2025,
+      type: 'conference',
+      pageUrl: 'https://ieeexplore.ieee.org/document/11297719',
+      // TODO: add `doi` (shown on the IEEE Xplore page); "View paper" will then use the DOI link
     },
   ],
 

@@ -31,15 +31,22 @@ export class PortfolioContent {
   readonly projects = computed(() => this.data().projects);
   readonly experiences = computed(() => this.data().experiences);
   readonly education = computed(() => this.data().education);
+  /** Most recent first, whatever the order in the data file. */
+  readonly publications = computed(() =>
+    [...this.data().publications].sort((a, b) => b.year - a.year),
+  );
   readonly skillGroups = computed(() => this.data().skillGroups);
   readonly contactLinks = computed(() => this.data().contactLinks);
 
-  /** Hides the "Projects" link while there are no projects to show. */
-  readonly navLinks = computed(() =>
-    this.data().navLinks.filter(
-      (link) => link.anchor !== 'projetos' || this.data().projects.length > 0,
-    ),
-  );
+  /** Hides the "Projects" and "Publications" links while those lists are empty. */
+  readonly navLinks = computed(() => {
+    const { navLinks, projects, publications } = this.data();
+    return navLinks.filter(
+      (link) =>
+        (link.anchor !== 'projetos' || projects.length > 0) &&
+        (link.anchor !== 'publications' || publications.length > 0),
+    );
+  });
 
   constructor() {
     // Keeps <html lang>, the tab title and the meta description in sync

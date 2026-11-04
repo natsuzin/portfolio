@@ -23,6 +23,14 @@
     <p class="label-text project__year">{{ p.year }}</p>
     <h3 class="project__title">{{ p.title }}</h3>
     <p class="project__subtitle">{{ p.subtitle }}</p>
+    @if (p.publication) {
+      <app-section-badge
+        class="project__publication"
+        anchor="publications"
+        [label]="p.publication.label"
+        [ariaLabel]="p.publication.ariaLabel"
+      />
+    }
   </header>
 
   <p class="project__description">{{ p.description }}</p>

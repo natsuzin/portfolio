@@ -14,5 +14,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/experience/experience-page').then((page) => page.ExperiencePage),
   },
+  {
+    // Same name as the section anchor, so the header highlights "Publications" here
+    path: 'publications',
+    loadComponent: () =>
+      import('./pages/publications/publications-page').then((page) => page.PublicationsPage),
+  },
   { path: '**', redirectTo: '' },
 ];
