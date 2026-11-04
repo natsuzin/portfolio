@@ -67,8 +67,8 @@ export const CONTENT_EN: PortfolioData = {
     role: 'Front-end Developer · UI/UX',
     location: 'Florianópolis, Brazil',
     summary: [
-      'At ID Energy, I plan, architect and build new internal software, with a focus on thoughtful interfaces.',
-      "I'm driven by learning and taking on new challenges. I'm finishing my Bachelor's degree in Computer Science at UNIVALI, graduating in the first semester of 2027.",
+      'At ID Energy, I build internal systems from planning to code, with special care for the interfaces.',
+      "While I finish my degree in Computer Science at UNIVALI, I keep looking for challenges that teach me something new.",
     ],
     photoAlt: 'Photo of Nathalia Suzin smiling, wearing a white shirt, at an academic event',
     facts: [

@@ -64,8 +64,8 @@ export const CONTENT_PT: PortfolioData = {
     role: 'Desenvolvedora Front-end · UI/UX',
     location: 'Florianópolis, SC',
     summary: [
-      'Atuo no planejamento, arquitetura e desenvolvimento de novos softwares internos na ID Energy, com foco em interfaces bem pensadas.',
-      'Sou movida por aprender e encarar novos desafios. Estou concluindo o bacharelado em Ciência da Computação na UNIVALI, com formatura prevista para o 1º semestre de 2027.',
+      'Desenvolvo sistemas internos na ID Energy do planejamento ao código, com um cuidado especial pelas interfaces.',
+      'Enquanto concluo Ciência da Computação na UNIVALI, sigo buscando desafios que me façam aprender algo novo.',
     ],
     photoUrl: 'images/nathalia.jpg',
     photoAlt: 'Foto de Nathalia Suzin sorrindo, de camisa branca, em um evento acadêmico',
